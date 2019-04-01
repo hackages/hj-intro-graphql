@@ -110,3 +110,5 @@ const resolvers = {
   },
 }
 ```
+
+**HINT**: Only the `categories` from the currently resolved `movie` should be returned. Inspect the `parent` parameter to check if you can grab useful information from there.
