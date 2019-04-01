@@ -40,14 +40,38 @@ query helloWorld {
 
 ### Implement your own API
 
-#### Create Movie type
-
 Create a `Movie` type within the `gql` string literals:
 
-```graphql
+```javascript
 const typeDefs = gql`
   type Movie {
       // type definition
   }
-`
+`;
 ```
+
+Now that we defined our `Movie` type, let's try to make a `getMovies` query.
+
+Add a `getMovies` field under the `Query` type that should return an `array` of `Movie`. **HINT**: use the `hello` Query field as example.
+
+```graphql
+  type Query {
+    getMovies: // return type
+  }
+```
+
+It's time to implement the `getMovies` resolver now (the function which will be executed when we execute the `getMovies` query). Each resolvers has the following.
+
+For now, this function should return en entire list of movies.
+
+```javascript
+const resolvers = {
+  Query: {
+    getMovies(parents, args, ctx, info) {
+      // return movies list
+    }
+  }
+};
+```
+
+You can get information about `resolvers` signature here: https://www.apollographql.com/docs/apollo-server/essentials/data#type-signature

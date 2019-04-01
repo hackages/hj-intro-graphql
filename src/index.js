@@ -46,7 +46,7 @@ const typeDefs = gql`
 
 const resolvers = {
   Query: {
-    hello: () => "Hello world!"
+    hello: (parent, args, ctx, info) => "Hello world!"
     // getCategories() {
     //   return categories;
     // },
