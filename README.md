@@ -111,11 +111,10 @@ const resolvers = {
 }
 ```
 
-**HINT**: Only the `categories` from the currently resolved `movie` should be returned. Inspect the `parent` parameter to check if you can grab useful information from there. 
+**HINT**: Only the `categories` from the currently resolved `movie` should be returned. Inspect the `parent` parameter to check if you can grab useful information from there.  
 **HINT2**: You can use the `getMoviesForCategory` within the `utils.js` file to help you.
 
-Don't forget to try your solution via the playground! Again, see how we can exactly define which fields we want to get back from the server, and so even for the chilren 
-
+Don't forget to try your solution via the playground! Again, see how we can exactly define which fields we want to get back from the server, and so even for the children 
 
 If you're wondering why we didn't implement the resolvers for the other `Movie` fields, you can read: https://graphql.org/learn/execution/#trivial-resolvers
 
@@ -125,3 +124,9 @@ Let's now do the same but for the other way around: add the possibility to retri
 1. Add a `movies` field to the `Category` type
 2. Implement the corresponding `resolver`
 3. Test your solution through the playground
+
+Cool! Now let's allow a user to get the `movies` from a specific `category`.
+
+1. Change the `getMovies` Query field to accept an optional `category` string.
+2. Adapt the `getMovies` resolver to only return `movies` from the specific `category` **only if the filter is present**. **HINT**: the `category` filter can be accessed through the resolver's `arg` parameter.
+3. Test your implementation via the playground. 
