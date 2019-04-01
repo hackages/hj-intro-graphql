@@ -1,4 +1,4 @@
-module.exports = [
+module.export = [
   {
     vote_count: 3658,
     id: 285,

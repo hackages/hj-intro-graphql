@@ -56,7 +56,7 @@ Add a `getMovies` field under the `Query` type that should return an `array` of 
 
 ```graphql
   type Query {
-    getMovies: // return type
+    getMovies: #return type
   }
 ```
 
