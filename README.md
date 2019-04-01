@@ -38,7 +38,7 @@ query helloWorld {
 }
 ```
 
-### Implement your own API
+### Create your own GraphQL server
 
 Create a `Movie` type within the `gql` string literals:
 
@@ -83,4 +83,15 @@ Let's do the same now for the `categories`:
 1. Define the `Category` type
 2. Add a `getCategories` field to the `Query` type
 3. Implement the corresponding `resolver`
-4. Verify that your `getCategories` works (via the playground)
+4. Verify that your `getCategories` query works (via the playground)
+
+As you've probably seen by now, a `Movie` is attributed to a list of `Category` through the `category_ids` field of the `Movie` type. Wouldn'it be better to be able to retrieve the list of `category` (and their details) when asking for a `Movie` ?
+
+To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type:
+
+```graphql
+type Movie {
+  #Exisiting fields
+  categories: ...
+}
+```
