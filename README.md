@@ -87,11 +87,26 @@ Let's do the same now for the `categories`:
 
 As you've probably seen by now, a `Movie` is attributed to a list of `Category` through the `category_ids` field of the `Movie` type. Wouldn'it be better to be able to retrieve the list of `category` (and their details) when asking for a `Movie` ?
 
-To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type:
+To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type. **HINT:**: use the `Category` type we've defined previously.
 
 ```graphql
 type Movie {
-  #Exisiting fields
-  categories: ...
+  #Existing fields
+  categories: ... #Use the Category type we've defined
+}
+```
+
+Then, create a `Movie` resolver field (next to the `Query` field) and describe how to resolve the `categories`:
+
+```javascript
+const resolvers = {
+  Query: {
+    //...
+  }
+  Movie: {
+    categories: (parent, args, ctx, info) => {
+      // Return the categories
+    }
+  },
 }
 ```
