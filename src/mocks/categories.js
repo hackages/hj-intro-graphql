@@ -1,4 +1,4 @@
-const categories = [
+module.exports = [
   {
     id: 28,
     name: "Action"
@@ -76,5 +76,3 @@ const categories = [
     name: "Western"
   }
 ];
-
-module.exports = categories;
