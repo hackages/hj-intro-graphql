@@ -75,3 +75,12 @@ const resolvers = {
 ```
 
 You can get information about `resolvers` signature here: https://www.apollographql.com/docs/apollo-server/essentials/data#type-signature
+
+You should now by able to run this `getMovies` query within the playground. Try it with different movie `fields` and see how `GraphQL` let you granulary select what information you need!
+
+Let's do the same now for the `categories`:
+
+1. Define the `Category` type
+2. Add a `getCategories` field to the `Query` type
+3. Implement the corresponding `resolver`
+4. Verify that your `getCategories` works (via the playground)
