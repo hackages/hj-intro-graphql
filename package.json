@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
