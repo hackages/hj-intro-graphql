@@ -129,4 +129,12 @@ Cool! Now let's allow a user to get the `movies` from a specific `category`.
 
 1. Change the `getMovies` Query field to accept an optional `category` string.
 2. Adapt the `getMovies` resolver to only return `movies` from the specific `category` **only if the filter is present**. **HINT**: the `category` filter can be accessed through the resolver's `arg` parameter.
-3. Test your implementation via the playground. 
+3. Test your implementation via the playground.
+
+## 3. Still hungry ?
+
+* If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply a HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
+
+```bash
+curl 'http://localhost:4000/' -H 'content-type: application/json' --data '{BODY_HERE}'
+```
