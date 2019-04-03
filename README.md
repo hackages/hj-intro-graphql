@@ -114,10 +114,9 @@ const resolvers = {
 **HINT**: Only the `categories` from the currently resolved `movie` should be returned. Inspect the `parent` parameter to check if you can grab useful information from there.  
 **HINT2**: You can use the `getMoviesForCategory` within the `utils.js` file to help you.
 
-Don't forget to try your solution via the playground! Again, see how we can exactly define which fields we want to get back from the server, and so even for the children 
+Don't forget to try your solution via the playground! Again, see how we can exactly define which fields we want to get back from the server, and so even for the children
 
 If you're wondering why we didn't implement the resolvers for the other `Movie` fields, you can read: https://graphql.org/learn/execution/#trivial-resolvers
-
 
 Let's now do the same but for the other way around: add the possibility to retrieve the list of `movies` from a category:
 
@@ -131,10 +130,38 @@ Cool! Now let's allow a user to get the `movies` from a specific `category`.
 2. Adapt the `getMovies` resolver to only return `movies` from the specific `category` **only if the filter is present**. **HINT**: the `category` filter can be accessed through the resolver's `arg` parameter.
 3. Test your implementation via the playground.
 
+Okay, now let's add the possibility to add a vote for a movie. Since we're going to change our data, we will use this time a `Mutation`:
+
+First, we need to define your `Mutation` type:
+
+```javascript
+  type Mutation {
+    addVote(movie_id: ID!): Movie!
+  }
+```
+
+The `addVote` mutation take a required `mutation_id` param and return a `Movie`.
+
+Now, let's implement the resolver:
+
+```javascript
+Mutation: {
+  addVote: (parent, args, ctx, info) => {
+    // Try to figure out what to do here
+  };
+}
+```
+
+Don't forget to try this `Mutation` via the playground!
+
 ## 3. Still hungry ?
 
-* If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply a HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
+- If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply a HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
 
 ```bash
 curl 'http://localhost:4000/' -H 'content-type: application/json' --data '{BODY_HERE}'
 ```
+
+- Implement a `getMovie` query type that should return a movie based on his `id`
+
+- Try t
