@@ -4,7 +4,7 @@
 
 Go to the GitHub GraphQL API Explorer: https://developer.github.com/v4/explorer/
 
-With the help of the documention that you can toggle on the right upper side of the `GraphiQL` explorer, try to write:
+With the help of the documentation that you can toggle on the right upper side of the `GraphiQL` explorer, try to write:
 
 1. A query to get the following information from the `Hackages` organization:
 
@@ -12,7 +12,7 @@ With the help of the documention that you can toggle on the right upper side of 
    - Total number of repositories
 
 2. Get the `id` of this repository
-3. Try to give a star to this reposiroty. **HINT**: you will need to use a `mutation` and the `id` of the repository (that you should have by now)
+3. Try to give a star to this repository. **HINT**: you will need to use a `mutation` and the `id` of the repository (that you should have by now)
 
 ## 2. Implement your own API
 
@@ -52,7 +52,7 @@ const typeDefs = gql`
 
 Now that we defined our `Movie` type, let's try to make a `getMovies` query.
 
-Add a `getMovies` field under the `Query` type that should return an `array` of `Movie`. **HINT**: use the `hello` Query field as example.
+Add a `getMovies` field under the `Query` type that should return an `array` of `Movie`. **HINT**: use the `hello` Query field as an example.
 
 ```graphql
   type Query {
@@ -60,9 +60,9 @@ Add a `getMovies` field under the `Query` type that should return an `array` of 
   }
 ```
 
-It's time to implement the `getMovies` resolver now (the function which will be executed when we execute the `getMovies` query). Each resolvers has the following.
+It's time to implement the `getMovies` resolver now (the function which will be executed when we execute the `getMovies` query). Each resolver has the following.
 
-For now, this function should return en entire list of movies.
+For now, this function should return an entire list of movies.
 
 ```javascript
 const resolvers = {
@@ -76,7 +76,7 @@ const resolvers = {
 
 You can get information about `resolvers` signature here: https://www.apollographql.com/docs/apollo-server/essentials/data#type-signature
 
-You should now by able to run this `getMovies` query within the playground. Try it with different movie `fields` and see how `GraphQL` let you granulary select what information you need!
+You should now be able to run this `getMovies` query within the playground. Try it with different movie `fields` and see how `GraphQL` let you granularly select what information you need!
 
 Let's do the same now for the `categories`:
 
@@ -85,7 +85,7 @@ Let's do the same now for the `categories`:
 3. Implement the corresponding `resolver`
 4. Verify that your `getCategories` query works (via the playground)
 
-As you've probably seen by now, a `Movie` is attributed to a list of `Category` through the `category_ids` field of the `Movie` type. Wouldn'it be better to be able to retrieve the list of `category` (and their details) when asking for a `Movie` ?
+As you've probably seen by now, a `Movie` is attributed to a list of `Category` through the `category_ids` field of the `Movie` type. Wouldn't it be better to be able to retrieve the list of `category` (and their details) when asking for a `Movie` ?
 
 To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type. **HINT:**: use the `Category` type we've defined previously.
 
@@ -156,7 +156,7 @@ Don't forget to try this `Mutation` via the playground!
 
 ## 3. Still hungry ?
 
-- If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply a HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
+- If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply an HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
 
 ```bash
 curl 'http://localhost:4000/' -H 'content-type: application/json' --data '{BODY_HERE}'
