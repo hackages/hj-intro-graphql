@@ -134,10 +134,10 @@ Okay, now let's add the possibility to add a vote for a movie. Since we're going
 
 First, we need to define your `Mutation` type:
 
-```javascript
-  type Mutation {
-    addVote(movie_id: ID!): Movie!
-  }
+```graphql
+type Mutation {
+  addVote(movie_id: ID!): Movie!
+}
 ```
 
 The `addVote` mutation take a required `mutation_id` param and return a `Movie`.
@@ -162,6 +162,6 @@ Don't forget to try this `Mutation` via the playground!
 curl 'http://localhost:4000/' -H 'content-type: application/json' --data '{BODY_HERE}'
 ```
 
-- Implement a `getMovie` query type that should return a movie based on his `id`
+- Implement a `getMovie` query type that should return a movie based on its `id`
 
-- Try t
+- Try to create a `voteAdded` `Subscription` which will react when a vote is added to a movie. You can find some useful documentation here: https://www.apollographql.com/docs/apollo-server/features/subscriptions
