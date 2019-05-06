@@ -166,43 +166,6 @@ author(id: 1) {
 export default SplitRight;
 
 ```graphql
-schema {
-  query: Query
-  mutation: Mutation
-  subscription: Subscription
-}
-```
-
-<div>
-  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>Schema</h2>
-  <div style={{ margin: 10 }}>
-    <ul
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "flex-start",
-        lineHeight: "1.5em",
-        textAlign: "left"
-      }}
-    >
-      <li>
-        <Important>Query</Important>: Request data from an API
-      </li>
-      <li>
-        <Important>Query</Important>: Request data from an API
-      </li>
-      <li>
-        <Important>Query</Important>: Request data from an API
-      </li>
-      </ul>
-  </div>
-</div>
-
----
-
-export default SplitRight;
-
-```graphql
 type Article {
   title: String!
   content: String!
@@ -215,7 +178,7 @@ type Author {
 ```
 
 <div>
-  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>GraphQL API</h2>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>Schema</h2>
   <div style={{ margin: 10 }}>
     <ul
       style={{
@@ -247,7 +210,56 @@ type Author {
 
 ---
 
+export default SplitRight;
+
+```graphql
+type Query {
+  authors: [Author!]!
+  author(id: ID!): Author!
+}
+
+type Mutation {
+  addAuthor(name: String!): Author!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+```
+
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>Schema</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em",
+        textAlign: "left"
+      }}
+    >
+      <li>3 main types that define the operations</li>
+      <li>
+        <Important>Query</Important>: Request data from an API (read operations)
+      </li>
+      <li>
+        <Important>Mutation</Important>: Perform data changes (write operations)
+      </li>
+      <li>
+        <Important>Subscription</Important>: Listen to the API for real-time
+        data changes
+      </li>
+    </ul>
+  </div>
+</div>
+
+---
+
 ## Resolvers
+
+Function that returns data for a particular field
 
 ```js
 const resolvers = {
