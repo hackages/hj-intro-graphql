@@ -1,5 +1,5 @@
 import { Head, Notes } from "mdx-deck";
-import { SplitRight } from "mdx-deck/layouts";
+import { SplitRight, FullScreenCode } from "mdx-deck/layouts";
 export { default as theme } from "./theme";
 import Important from "Important";
 import SyntaxHighlighter from "react-syntax-highlighter";
@@ -72,7 +72,8 @@ export default SplitRight;
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        lineHeight: "1.5em"
+        lineHeight: "1.5em",
+        textAlign: "left"
       }}
     >
       <li>
@@ -135,7 +136,8 @@ author(id: 1) {
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
-        lineHeight: "1.5em"
+        lineHeight: "1.5em",
+        textAlign: "left"
       }}
     >
       <li>
@@ -150,23 +152,55 @@ author(id: 1) {
       <li>
         All the data in <Important>one request</Important> - no several requests
       </li>
+      <li>
+        Query is validated against a <Important>type system</Important>
+      </li>
     </ul>
+    <br />
+    <h2 style={{ color: "#067df7" }}>Declarative data fetching language</h2>
   </div>
 </div>
 
 ---
 
-## GraphQL API
+export default SplitRight;
 
-3 root types:
+```graphql
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+```
 
-- Query
-- Mutation
-- Subscription
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>Schema</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em",
+        textAlign: "left"
+      }}
+    >
+      <li>
+        <Important>Query</Important>: Request data from an API
+      </li>
+      <li>
+        <Important>Query</Important>: Request data from an API
+      </li>
+      <li>
+        <Important>Query</Important>: Request data from an API
+      </li>
+      </ul>
+  </div>
+</div>
 
 ---
 
-## Scalar/Object Type
+export default SplitRight;
 
 ```graphql
 type Article {
@@ -178,12 +212,38 @@ type Author {
   name: String!
   articles: [Article!]
 }
+```
 
-type Query {
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>GraphQL API</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em",
+        textAlign: "left"
+      }}
+    >
+      <li>
+        <span>
+          Every GraphQL services defines types in a{" "}
+          <Important>GraphQL schema</Important>
+        </span>
+      </li>
+      <li>
+        Defines <Important>operations</Important> that a client can make and how{" "}
+        <Important>types a related</Important>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- type Query {
   authors: [Author!]!
   author(id: ID!): Author!
-}
-```
+} -->
 
 ---
 
@@ -196,3 +256,14 @@ const resolvers = {
   }
 };
 ```
+
+---
+
+export default FullScreenCode;
+
+<iframe
+  src="https://graphql.org/swapi-graphql/"
+  style={{ width: "100%", height: "100vh" }}
+/>
+
+---
