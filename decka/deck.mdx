@@ -1,0 +1,198 @@
+import { Head, Notes } from "mdx-deck";
+import { SplitRight } from "mdx-deck/layouts";
+export { default as theme } from "./theme";
+import Important from "Important";
+import SyntaxHighlighter from "react-syntax-highlighter";
+
+<Head>
+  <title>Introduction to GraphQL</title>
+</Head>
+
+<div style={{ fontSize: "3em", fontWeight: "bold" }}>
+  Introduction to <span style={{ color: "#D400FF" }}>GraphQL</span>
+</div>
+<br/>
+<div style={{ fontSize: "1.5em", fontWeight: "bold", color: '#067df7' }}>
+@Hackages
+</div>
+&nbsp;
+
+<div style={{ fontSize: 25 }}>
+  {new Date(Date.now()).toLocaleDateString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  })}
+</div>
+
+---
+
+## What's GraphQL
+
+- Query language created by Facebook
+- <Important>Specification</Important> for client-server communication
+- <Important>Transport agnostic</Important> but typically server over HTTP
+- Created to mainly overcome <Important>REST issues</Important>
+
+<Notes>
+  Not an implementation but a specification which describe the characteristics
+  of the languages (capabilities, grammar)
+</Notes>
+
+---
+
+export default SplitRight;
+
+```js
+{
+  name: "Davy",
+  location: "Amsterdam",
+  dateOfBirth: "1980-12-05",
+  posts: [
+    {
+      title: "post1",
+      content: "...",
+      publicationDate: "2019-02-12"
+    },
+    {
+      title: "post2",
+      content: "...",
+      publicationDate: "2019-02-13"
+    }
+  ]
+}
+```
+
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>REST</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em"
+      }}
+    >
+      <li>
+        <Important>Resource-oriented</Important> architecture
+      </li>
+      <li>
+        HTTP verbs to describe <Important>actions</Important>: GET, PUT, DELETE
+      </li>
+      <li>
+        <Important>Routes</Important> that represent information:{" "}
+        <i>/library/author/1</i>
+      </li>
+    </ul>
+    <br />
+    <h2 style={{ color: "#067df7" }}>
+      Do not enforce specific data response format
+    </h2>
+    <span>PROBLEM: under/over-fetching</span>
+  </div>
+</div>
+
+<Notes>
+  <p>
+    With REST we have as you all now the verbs which let you kind of communicate
+    on what are your intent: getting resources, saving or updating something
+    etc..
+  </p>
+  <p>
+    Then we have the resource which is simply a string. We can communicate which
+    resource we would like to work.
+  </p>
+  <p>
+    What is important is that the shape of the data that you get back is decided
+    by the server.
+  </p>
+  <p>
+    That's the problem GraphQL is trying to solve => overfecthing or
+    underfetching (and being obliged to send a lot of subrequests)
+  </p>
+</Notes>
+
+---
+
+export default SplitRight;
+
+```graphql
+author(id: 1) {
+  name
+  articles {
+    title
+  }
+}
+```
+
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>GraphQL</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em"
+      }}
+    >
+      <li>
+        A GraphQL query <Important>asks only for the data it needs</Important>
+      </li>
+      <li>
+        Response: JSON that <Important>match the shape of the query</Important>
+      </li>
+      <li>
+        No <Important>additional/unwanted</Important> fields
+      </li>
+      <li>
+        All the data in <Important>one request</Important> - no several requests
+      </li>
+    </ul>
+  </div>
+</div>
+
+---
+
+## GraphQL API
+
+3 root types:
+
+- Query
+- Mutation
+- Subscription
+
+---
+
+## Scalar/Object Type
+
+```graphql
+type Article {
+  title: String!
+  content: String!
+}
+
+type Author {
+  name: String!
+  articles: [Article!]
+}
+
+type Query {
+  authors: [Author!]!
+  author(id: ID!): Author!
+}
+```
+
+---
+
+## Resolvers
+
+```js
+const resolvers = {
+  Query: {
+    authors: (parent, args, ctx, info) => // return list of authors
+  }
+};
+```

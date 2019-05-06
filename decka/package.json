@@ -1,0 +1,13 @@
+{
+  "private": true,
+  "name": "presentation",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx",
+    "help": "mdx-deck"
+  },
+  "devDependencies": {
+    "mdx-deck": "^1.10.0"
+  }
+}
