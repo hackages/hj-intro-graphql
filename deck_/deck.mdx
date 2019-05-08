@@ -129,7 +129,7 @@ author(id: 1) {
 ```
 
 <div>
-  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>GraphQL</h2>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>GraphQL Query</h2>
   <div style={{ margin: 10 }}>
     <ul
       style={{
@@ -203,11 +203,6 @@ type Author {
   </div>
 </div>
 
-<!-- type Query {
-  authors: [Author!]!
-  author(id: ID!): Author!
-} -->
-
 ---
 
 export default SplitRight;
@@ -257,25 +252,57 @@ schema {
 
 ---
 
-## Resolvers
-
-Function that returns data for a particular field
+export default SplitRight;
 
 ```js
 const resolvers = {
   Query: {
-    authors: (parent, args, ctx, info) => // return list of authors
+    authors: (parent, args, ctx, info) => {
+      // return list of authors
+    }
   }
 };
 ```
 
+<div>
+  <h2 style={{ fontSize: "2em", lineHeight: 1.25 }}>Resolvers</h2>
+  <div style={{ margin: 10 }}>
+    <ul
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        lineHeight: "1.5em",
+        textAlign: "left"
+      }}
+    >
+      <li>
+        Function that <Important>returns data for a particular field</Important>
+      </li>
+      <li>
+        Returns data in <Important>the type and shape</Important> specified by
+        the schema
+      </li>
+      <li>Can be asynchronous</li>
+    </ul>
+  </div>
+</div>
+
+
 ---
 
-export default FullScreenCode;
+## HackJam
 
-<iframe
-  src="https://graphql.org/swapi-graphql/"
-  style={{ width: "100%", height: "100vh" }}
-/>
+- Implement a GraphQL Server (Apollo)
+- Defines Schema (types and operations)
+- Implement Resolver functions
+- Bonus: Subscriptions 🎉
 
 ---
+
+## HackJam GraphQL
+
+https://github.com/hackages/hj-intro-graphql
+
+
+
