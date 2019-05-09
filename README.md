@@ -126,12 +126,12 @@ Let's now do the same but in the other way around: add the possibility to retrie
 2. Implement the corresponding `resolver`
 3. Test your solution through the playground
 
-**HINT**: You can use the `getMoviesForCategory` within the `utils.js` file to help you. This function take the category name as parameter.
 
 Cool! Now let's allow a user to get the `movies` from a specific `category`.
 
 1. Change the `getMovies` Query field to accept an optional `category` string.
 2. Adapt the `getMovies` resolver to only return `movies` from the specific `category` **only if the filter is present**. **HINT**: the `category` filter can be accessed through the resolver's `arg` parameter.
+**HINT**: You can use the `getMoviesForCategory` within the `utils.js` file to help you. This function take the category name as parameter.
 3. Test your implementation via the playground.
 
 Okay, now let's add the possibility to add a vote for a movie. Since we're going to change our data, we will use this time a `Mutation`:
