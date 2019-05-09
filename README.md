@@ -30,7 +30,7 @@ npm run start
 
 Go to [http://localhost:4000/](http://localhost:4000/), you should get a playground where you can type your query/mutation on the left side and see the result on the right side.
 
-If everything is working correctly, you should be able to execute à `hello` query:
+If everything is working correctly, you should be able to execute a `hello` query:
 
 ```graphql
 query helloWorld {
@@ -38,9 +38,13 @@ query helloWorld {
 }
 ```
 
-### Create your own GraphQL server
+The resolver and type for this query are within the `index.js` file. You can try to change the return value of the resolver (for instance return an object instead of a string as defined in the `typeDefs`) and see what happens.
 
-Create a `Movie` type within the `gql` string literals:
+### Create your own GraphQL type
+
+Create a `Movie` type within the `gql` string literals. Try to write the movie type definition based on the shape of a movie that you can see in the `mocks` folder.
+
+You can have a look at the `GraphQL` scalar types: https://graphql.org/learn/schema/#scalar-types
 
 ```javascript
 const typeDefs = gql`
@@ -60,9 +64,9 @@ Add a `getMovies` field under the `Query` type that should return an `array` of 
   }
 ```
 
-It's time to implement the `getMovies` resolver now (the function which will be executed when we execute the `getMovies` query). Each resolver has the following.
+It's time to implement the `getMovies` resolver now (the function which will be executed when we make a `getMovies` query). Each resolver has the following.
 
-For now, this function should return an entire list of movies.
+For now, this function should return the entire list of movies.
 
 ```javascript
 const resolvers = {
@@ -76,7 +80,7 @@ const resolvers = {
 
 You can get information about `resolvers` signature here: https://www.apollographql.com/docs/apollo-server/essentials/data#type-signature
 
-You should now be able to run this `getMovies` query within the playground. Try it with different movie `fields` and see how `GraphQL` let you granularly select what information you need!
+You should now be able to run this `getMovies` query within the playground. Try it with different movie `fields` and see how `GraphQL` let you granularly select what information you need! **NOTE**: You will probably have to refresh the `playground` to have the new type definitions updated.
 
 Let's do the same now for the `categories`:
 
@@ -87,7 +91,7 @@ Let's do the same now for the `categories`:
 
 As you've probably seen by now, a `Movie` is attributed to a list of `Category` through the `category_ids` field of the `Movie` type. Wouldn't it be better to be able to retrieve the list of `category` (and their details) when asking for a `Movie` ?
 
-To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type. **HINT:**: use the `Category` type we've defined previously.
+To make that possible, we should slightly modify our `Movie` type. Add a `categories` field to the `Movie` type. **HINT**: use the `Category` type we've defined previously.
 
 ```graphql
 type Movie {
@@ -112,17 +116,17 @@ const resolvers = {
 ```
 
 **HINT**: Only the `categories` from the currently resolved `movie` should be returned. Inspect the `parent` parameter to check if you can grab useful information from there.  
-**HINT2**: You can use the `getMoviesForCategory` within the `utils.js` file to help you.
+
 
 Don't forget to try your solution via the playground! Again, see how we can exactly define which fields we want to get back from the server, and so even for the children
 
-If you're wondering why we didn't implement the resolvers for the other `Movie` fields, you can read: https://graphql.org/learn/execution/#trivial-resolvers
-
-Let's now do the same but for the other way around: add the possibility to retrieve the list of `movies` from a category:
+Let's now do the same but in the other way around: add the possibility to retrieve the list of `movies` from a category:
 
 1. Add a `movies` field to the `Category` type
 2. Implement the corresponding `resolver`
 3. Test your solution through the playground
+
+**HINT**: You can use the `getMoviesForCategory` within the `utils.js` file to help you. This function take the category name as parameter.
 
 Cool! Now let's allow a user to get the `movies` from a specific `category`.
 
@@ -155,12 +159,6 @@ Mutation: {
 Don't forget to try this `Mutation` via the playground!
 
 ## 3. Still hungry ?
-
-- If you open your `network` devtools and analyse what's going on when you run one of your query via your playground, you can see that under the hood, that's simply an HTTP `POST` request containing your `query` in the body which is sent to your server. You can even run it with `curl`:
-
-```bash
-curl 'http://localhost:4000/' -H 'content-type: application/json' --data '{BODY_HERE}'
-```
 
 - Implement a `getMovie` query type that should return a movie based on its `id`
 
