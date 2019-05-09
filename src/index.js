@@ -58,9 +58,7 @@ const resolvers = {
   },
   Movie: {
     categories: (parent, args, ctx, info) => {
-      return parent.category_ids.map(id =>
-        categories.find(genre => genre.id === id)
-      );
+      return categories.filter(c => category_ids.includes(c.id));
     }
   },
   Category: {
