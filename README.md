@@ -162,4 +162,6 @@ Don't forget to try this `Mutation` via the playground!
 
 - Implement a `getMovie` query type that should return a movie based on its `id`
 
+- Let's try to write a query that returns the list of `movies` and `categories`
+
 - Try to create a `voteAdded` `Subscription` which will react when a vote is added to a movie. You can find some useful documentation here: https://www.apollographql.com/docs/apollo-server/features/subscriptions
