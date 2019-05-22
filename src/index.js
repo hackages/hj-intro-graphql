@@ -58,7 +58,7 @@ const resolvers = {
   },
   Movie: {
     categories: (parent, args, ctx, info) => {
-      return categories.filter(c => category_ids.includes(c.id));
+      return categories.filter(c => parent.category_ids.includes(c.id));
     }
   },
   Category: {
